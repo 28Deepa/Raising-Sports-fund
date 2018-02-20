@@ -1,0 +1,62 @@
+package com.example.hp.sports;
+
+import android.content.Intent;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    ViewPager viewPager;
+    customSwip customSwip ;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        viewPager =(ViewPager)findViewById(R.id.viewPager);
+        customSwip=new customSwip(this);
+        viewPager.setAdapter(customSwip);
+
+    }
+    public void abc(View v) {
+        Intent i = new Intent(MainActivity.this, login_page.class);
+        startActivity(i);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater= getMenuInflater();
+menuInflater.inflate(R.menu.menu_main,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+switch (item.getItemId()){
+    case R.id.organisation_id:
+        Toast.makeText(getApplicationContext(), "organisation is selected", Toast.LENGTH_SHORT).show();
+        break;
+    case R.id.orphanage_id:
+        Toast.makeText(getApplicationContext(), "orphanage is selected", Toast.LENGTH_SHORT).show();
+        break;
+    case R.id.info_id:
+        Intent i = new Intent(MainActivity.this, aboutus.class);
+        startActivity(i);
+        break;
+    case R.id.setting_id:
+        Intent j = new Intent(MainActivity.this, ministatement.class);
+        startActivity(j);
+        break;
+
+    default:
+            return super.onOptionsItemSelected(item);
+} return super.onOptionsItemSelected(item);
+
+    }
+}
